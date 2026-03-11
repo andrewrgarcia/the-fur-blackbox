@@ -3,7 +3,7 @@
   <img width="400" alt="fur-box" src="https://github.com/user-attachments/assets/0f716f7b-8df3-4e18-84f8-d503996026db" />
 </p>
 
-# The FUR Blackbox
+# The FUR Safe
 
 An experimental repository exploring the **locking and encryption capabilities** of recent versions of **FUR**.
 
@@ -39,7 +39,7 @@ https://crates.io/crates/fur-cli
 
 ---
 
-## Unlocking the Blackbox
+## Unlocking the Safe
 
 The encrypted conversations in this repository are protected using **FUR's password-locking system**.
 
@@ -97,7 +97,7 @@ By default AESus generates **6 Diceware words**, providing approximately **77.5 
 
 ## Purpose of this repository
 
-**The FUR Blackbox** is a sandbox used to test the **security and locking features** introduced in newer versions of FUR.
+**The FUR Safe** is a sandbox used to test the **security and locking features** introduced in newer versions of FUR.
 
 The experiments here focus on:
 
