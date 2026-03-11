@@ -1,0 +1,5 @@
+{
+  "algorithm": "AES-256-GCM",
+  "locked": true,
+  "version": 1
+}
