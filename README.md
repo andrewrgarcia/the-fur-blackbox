@@ -1,6 +1,6 @@
 <!-- LOGO -->
 <p align="center">
-  <img width="300" alt="ChatGPT Image Mar 10, 2026, 07_19_28 PM" src="https://github.com/user-attachments/assets/1ee21190-1dcc-427a-888b-89e87ce6c2ab" />
+  <img width="300" alt="fur-blackbox" src="https://github.com/user-attachments/assets/1ee21190-1dcc-427a-888b-89e87ce6c2ab" />
 
 </p>
 
