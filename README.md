@@ -1,9 +1,7 @@
 <!-- LOGO -->
 <p align="center">
   <img width="400" alt="fur-box" src="https://github.com/user-attachments/assets/0f716f7b-8df3-4e18-84f8-d503996026db" />
-
 </p>
-
 
 # The FUR Blackbox
 
@@ -41,18 +39,13 @@ https://crates.io/crates/fur-cli
 
 ---
 
-
 ## Unlocking the Blackbox
 
 The encrypted conversations in this repository are protected using **FUR's password-locking system**.
 
-For demonstration purposes, the passphrase is intentionally public so that anyone can reproduce the decryption process. This repository exists only to demonstrate the encryption capabilities of FUR.
+For demonstration purposes, the password is intentionally public so that anyone can reproduce the decryption process. This repository exists only to demonstrate the encryption capabilities of FUR.
 
-### Demo password
-
-```
-culture-liquefy-washroom-thievish-coexist-chip
-```
+The demo password is stored in: [demo-password.txt](demo-password.txt)
 
 Unlock the repository using FUR:
 
@@ -64,13 +57,27 @@ This will decrypt the encrypted conversation artifacts and restore the original 
 
 ---
 
+## Inspecting the conversation
+
+After unlocking the repository, the reconstructed conversation can be printed with:
+
+```
+fur print
+```
+
+This command rebuilds the conversation from the unlocked artifacts and prints the full dialogue.
+
+This repository therefore functions as a **reproducible demonstration** of how FUR conversations can be encrypted, stored publicly, and later restored.
+
+---
+
 ### Security note
 
 The password above is intentionally public and used only for demonstration.
 
-Real conversations should always use a **freshly generated high-entropy passphrase**.
+Real conversations should always use a **freshly generated high-entropy password**.
 
-One way to generate secure passphrases is with another tool in this ecosystem:
+One way to generate secure passwords is with another tool in this ecosystem.
 
 Install:
 
@@ -78,14 +85,13 @@ Install:
 cargo install aesus
 ```
 
-Generate a passphrase:
+Generate a password:
 
 ```
 aesus generate
 ```
 
-By default, AESus generates **6 Diceware words**, providing approximately **77.5 bits of entropy**, which is suitable for strong password-based encryption.
-
+By default AESus generates **6 Diceware words**, providing approximately **77.5 bits of entropy**, which is suitable for strong password-based encryption.
 
 ---
 
@@ -124,23 +130,48 @@ These artifacts can safely exist inside a repository without exposing the underl
 
 ---
 
-## Conversation formats in FUR
+## Why the ciphertext changes every time
 
-FUR supports two message formats.
+If you experiment with the repository you may notice something interesting.
 
-### Jot messages
+Running a cycle such as:
 
-Short-form messages stored directly inside conversation metadata.
+```
+lock → unlock → lock
+```
 
-These are lightweight exchanges embedded within the conversation structure.
+will produce **different ciphertext each time**, even when:
 
-### Markdown conversations
+- the password is identical
+- the plaintext conversation has not changed
 
-Long-form conversation messages exported as markdown files by the FUR tool.
+This behavior is intentional.
 
-These represent extended dialogue sessions or full conversations.
+FUR encryption uses authenticated encryption based on **AES-GCM**. Each encryption operation includes a **random nonce (initialization vector)**.
 
-Both forms are protected by FUR's encryption system.
+Conceptually:
+
+```
+ciphertext = AES_GCM(key, nonce, plaintext)
+```
+
+Because the nonce is randomly generated each time, encrypting the same plaintext repeatedly produces different ciphertext outputs.
+
+```
+encrypt(plaintext, password) → ciphertext A
+encrypt(plaintext, password) → ciphertext B
+encrypt(plaintext, password) → ciphertext C
+```
+
+All ciphertext artifacts will differ.
+
+The nonce is stored alongside the ciphertext so the system can still decrypt the conversation correctly.
+
+This property ensures the encryption is **non-deterministic**, which prevents attackers from detecting when the same plaintext appears multiple times.
+
+If ciphertext did **not** change between encryptions, it would indicate deterministic encryption — a serious security weakness.
+
+Changing ciphertext for identical plaintext is therefore **expected and desirable**.
 
 ---
 
@@ -156,9 +187,6 @@ Encrypted artifacts should behave like normal repository files:
 - they remain unreadable without the key
 
 This repository therefore functions as a **test environment for encrypted conversational artifacts under version control**.
-
-
-
 
 ---
 
