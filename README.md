@@ -1,8 +1,9 @@
 <!-- LOGO -->
 <p align="center">
-  <img width="300" alt="fur-blackbox" src="https://github.com/user-attachments/assets/1ee21190-1dcc-427a-888b-89e87ce6c2ab" />
+  <img width="400" alt="fur-box" src="https://github.com/user-attachments/assets/0f716f7b-8df3-4e18-84f8-d503996026db" />
 
 </p>
+
 
 # The FUR Blackbox
 
