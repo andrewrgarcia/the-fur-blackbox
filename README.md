@@ -1,6 +1,7 @@
 <!-- LOGO -->
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c3582cb8-c1cc-41ab-9ed1-f8fbde4d8c21" width="200" alt="fur logo"/>
+  <img width="300" alt="ChatGPT Image Mar 10, 2026, 07_19_28 PM" src="https://github.com/user-attachments/assets/1ee21190-1dcc-427a-888b-89e87ce6c2ab" />
+
 </p>
 
 # The FUR Blackbox
